@@ -1,0 +1,190 @@
+:root {
+    --primary-color: #ba2930;
+    --secondary-color: #fff;
+    --hover-color: #e75b61;
+    --font-family: 'Poppins', sans-serif;
+    --font-size-base: 16px;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family), sans-serif;
+    font-size: var(--font-size-base);
+    background-color: var(--secondary-color);
+    color: #333;
+    display: flex;
+    min-height: 100vh;
+}
+
+.dashboard-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.hamburger-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    padding: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.hamburger-button:hover {
+    background-color: var(--hover-color);
+}
+
+.sidebar {
+    background-color: var(--primary-color);
+    padding: 40px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 250px;
+    position: fixed;
+    height: 100%;
+    transform: translateX(-250px);
+    transition: transform 0.3s ease-in-out;
+    z-index: 9;
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar a:hover {
+    background-color: var(--hover-color);
+}
+
+.sidebar a.active {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 270px;
+    transition: margin-left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    overflow-x: hidden;
+}
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.card {
+    flex: 1 1 200px;
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 1rem;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: 600;
+}
+
+td {
+    background-color: #f8f8f8;
+}
+
+@media (max-width: 1200px) {
+    .content {
+        padding: 15px;
+        margin-left: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 200px;
+        transform: translateX(-200px);
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .content {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hamburger-button {
+        top: 10px;
+        left: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+
+    .sidebar {
+        width: 180px;
+        transform: translateX(-180px);
+    }
+
+    .hamburger-button {
+        font-size: 20px;
+    }
+
+    th, td {
+        font-size: 0.9rem;
+    }
+}
